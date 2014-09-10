@@ -5,8 +5,8 @@ let main argv =
     // Generate all possible Pythagoras triplets up to 500
     let pythagTriplets = 
         seq {
-            for a in [1..500] do
-                for b in [1..500] do
+            for a in [1 .. (targetSum/2)] do
+                for b in [1 .. (targetSum/2)] do
                     let c = targetSum - a - b 
                     if (a*a) + (b*b) = (c*c) then yield (a, b, c)
         }
