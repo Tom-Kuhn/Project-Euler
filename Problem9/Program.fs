@@ -12,7 +12,7 @@ let main argv =
         }
 
     // Filter the Pythagoras triplets and select the first
-    let (a, b, c) = pythagTriplets |> Seq.max
+    let (a, b, c) = pythagTriplets |> Seq.head
     
     // Calculate the result
     let result = a*b*c
