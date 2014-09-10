@@ -34,9 +34,8 @@ let main argv =
     // Function to generate a product from a list e.g. x[0] * x[1] * ... x[n]
     let generateProduct x = Seq.fold(fun acc element -> acc * element) 1L x
 
-    // Map all the windows to thire respoective products and select the largest
-    let products = windows |> Seq.map generateProduct
-    let maxProducts = products |> Seq.max
+    // Map all the windows to their respective products and select the largest
+    let maxProduct = windows |> Seq.map generateProduct |> Seq.max
 
-    printfn "%i" maxProducts
+    printfn "%i" maxProduct
     0 // return an integer exit code
