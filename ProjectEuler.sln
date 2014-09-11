@@ -1,25 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem1", "Problem1\Problem1.fsproj", "{6715036B-7574-416E-91A8-C63F9FB9B16B}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem001", "Problem1\Problem001.fsproj", "{6715036B-7574-416E-91A8-C63F9FB9B16B}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem2", "Problem2\Problem2.fsproj", "{9FC7DA62-3219-4A80-B6BC-6D3AD0350CB2}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem002", "Problem2\Problem002.fsproj", "{9FC7DA62-3219-4A80-B6BC-6D3AD0350CB2}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem3", "Problem3\Problem3.fsproj", "{D9C92FDD-676C-48D3-BD98-A19AFE0F98A8}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem003", "Problem3\Problem003.fsproj", "{D9C92FDD-676C-48D3-BD98-A19AFE0F98A8}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem4", "Problem4\Problem4.fsproj", "{397C6261-AE79-4C2F-B3F7-0E88499A5B4E}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem004", "Problem4\Problem004.fsproj", "{397C6261-AE79-4C2F-B3F7-0E88499A5B4E}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem5", "Problem5\Problem5.fsproj", "{C2C4104B-4508-4504-9A44-F980994DCCCB}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem005", "Problem5\Problem005.fsproj", "{C2C4104B-4508-4504-9A44-F980994DCCCB}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem6", "Problem6\Problem6.fsproj", "{11BB5061-F016-43FB-810E-32FF1B7817E3}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem006", "Problem6\Problem006.fsproj", "{11BB5061-F016-43FB-810E-32FF1B7817E3}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem7", "Problem7\Problem7.fsproj", "{09545DF4-56B4-47CA-A424-7F1D5C2AB77C}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem007", "Problem7\Problem007.fsproj", "{09545DF4-56B4-47CA-A424-7F1D5C2AB77C}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem8", "Problem8\Problem8.fsproj", "{F0E41DD9-B1A1-41A1-9750-2238371AC6A9}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem008", "Problem8\Problem008.fsproj", "{F0E41DD9-B1A1-41A1-9750-2238371AC6A9}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem9", "Problem9\Problem9.fsproj", "{DD250E41-8CD5-4C1E-8065-E690B4A4E33C}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem009", "Problem9\Problem009.fsproj", "{DD250E41-8CD5-4C1E-8065-E690B4A4E33C}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Problem010", "Problem10\Problem010.fsproj", "{2082B0F3-7F21-44EB-BA1E-55CC43D3996D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{DD250E41-8CD5-4C1E-8065-E690B4A4E33C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD250E41-8CD5-4C1E-8065-E690B4A4E33C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD250E41-8CD5-4C1E-8065-E690B4A4E33C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2082B0F3-7F21-44EB-BA1E-55CC43D3996D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2082B0F3-7F21-44EB-BA1E-55CC43D3996D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2082B0F3-7F21-44EB-BA1E-55CC43D3996D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2082B0F3-7F21-44EB-BA1E-55CC43D3996D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
