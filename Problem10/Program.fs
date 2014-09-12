@@ -1,29 +1,37 @@
-﻿let isPrime x primes =
-    let isEvenDivisor num div = num % div
+﻿// Reference System.Core in the v3.5 framework for 'HashSet' 
+#if INTERACTIVE
+#r @"C:\Windows\assembly\GAC_MSIL\System.Core\3.5.0.0__b77a5c561934e089\System.Core.dll" 
+#endif
 
-    let result = primes |> Seq.map (fun p -> isEvenDivisor x p) |> Seq.forall (fun y -> y != 0)
-    result
-    
+open System 
+open System.Collections.Generic 
 
 let primeSequence maxValue =
-   let primes = {2L .. 3L}
-   
-   let result = 
-        Seq.append (seq {
-          for i in 2L..maxValue do        
-             if isPrime i primes then
-                Seq.append primes (Seq.singleton i) |> ignore
-                yield i
-       }) primes
+ seq { 
+        // First prime 
+        yield 2L 
 
-   primes = Seq.append (Seq.singleton 1) primes
+        let knownComposites = new HashSet<int64>() 
+        
+        // Loop through all odd numbers; evens can't be prime 
+        for i in 3L .. 2L .. maxValue do 
+            
+            // Check if its in our list, if not, its prime 
+            let found = knownComposites.Contains(i) 
+            if not found then 
+                yield i 
 
+            // Add all multiples of i to our sieve, starting 
+            // at i and irecementing by i. 
+            do for j in i .. i .. maxValue do 
+                   knownComposites.Add(j) |> ignore 
+    } 
 
 [<EntryPoint>]
 let main argv = 
-    let maxNumber = 2000000000L
+    let maxNumber = 2000000L
 
     let sumOfPrimes = primeSequence maxNumber |> Seq.sum
 
-    printfn "%i" sumOfPrimes
+    printfn "%A" sumOfPrimes
     0 // return an integer exit code
