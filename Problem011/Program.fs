@@ -1,16 +1,25 @@
 ﻿let generateNWtoSEDiagonalProduct (rows : int[][]) (cols : int[]) =    
-    [0 ..3] |> Seq.fold ( fun acc iter -> acc * rows.[iter].[cols.[iter]]) 1     
+    [0 .. 3] |> Seq.fold ( fun acc iter -> acc * rows.[iter].[cols.[iter]]) 1     
 
 let generateNEtoSWDiagonalProduct (rows : int[][]) (cols : int[]) =    
-    [0 ..3] |> Seq.fold ( fun acc iter -> acc * rows.[3-iter].[cols.[iter]]) 1     
+    [0 .. 3] |> Seq.fold ( fun acc iter -> acc * rows.[3-iter].[cols.[iter]]) 1    
 
-/// Generate all possible products in the row group both NW/SE & SW/NE 
-/// (only check these diagonals as the inverse e.g. SE/NW will generate the same result)
+let generateNtoSProduct (rows : int[][]) (col : int) =    
+    [0 .. 3] |> Seq.fold ( fun acc iter -> acc * rows.[iter].[col]) 1
+
+let generateEtoWProduct (rows : int[][]) (cols : int[]) =   
+    [0 .. 3] |> Seq.map (fun x -> ([0 .. 3] |> Seq.fold ( fun acc iter -> acc * rows.[x].[cols.[iter]]) 1))     
+
+/// Generate all possible products in the row group: N/S, E/W, NW/SE & SW/NE 
+/// (only check these directions as the inverse e.g. SE/NW will generate the same result)
 let generateProducts rows = 
     let cols = Seq.windowed 4 [0 .. 19] // a sliding window of 4 across the columns
     let NWProducts = cols |> Seq.map (fun x -> generateNWtoSEDiagonalProduct rows x)
     let NEProducts = cols |> Seq.map (fun x -> generateNEtoSWDiagonalProduct rows x)
-    Seq.append NWProducts NEProducts
+    let NtoSProducts =  [0 .. 19] |> Seq.map (fun x -> generateNtoSProduct rows x)
+    let EtoWProducts = cols |> Seq.map (fun x -> generateEtoWProduct rows x) |> Seq.concat
+
+    Seq.append (Seq.append NWProducts NEProducts) (Seq.append NtoSProducts EtoWProducts)
 
 [<EntryPoint>]
 let main argv = 
