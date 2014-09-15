@@ -1,4 +1,18 @@
-﻿[<EntryPoint>]
+﻿let generateNWtoSEDiagonalProduct (rows : int[][]) (cols : int[]) =    
+    [0 ..3] |> Seq.fold ( fun acc iter -> acc * rows.[iter].[cols.[iter]]) 1     
+
+let generateNEtoSWDiagonalProduct (rows : int[][]) (cols : int[]) =    
+    [0 ..3] |> Seq.fold ( fun acc iter -> acc * rows.[3-iter].[cols.[iter]]) 1     
+
+/// Generate all possible products in the row group both NW/SE & SW/NE 
+/// (only check these diagonals as the inverse e.g. SE/NW will generate the same result)
+let generateProducts rows = 
+    let cols = Seq.windowed 4 [0 .. 19] // a sliding window of 4 across the columns
+    let NWProducts = cols |> Seq.map (fun x -> generateNWtoSEDiagonalProduct rows x)
+    let NEProducts = cols |> Seq.map (fun x -> generateNEtoSWDiagonalProduct rows x)
+    Seq.append NWProducts NEProducts
+
+[<EntryPoint>]
 let main argv = 
     let input = 
         [|
@@ -24,7 +38,11 @@ let main argv =
             [| 01; 70; 54; 71; 83; 51; 54; 69; 16; 92; 33; 48; 61; 43; 52; 01; 89; 19; 67; 48 |]
         |] |> Array.toSeq
         
-    let rows = Seq.windowed 4 input
+    // Generate all diagonal products in row groups of 4
+    let products = Seq.windowed 4 input |> Seq.map generateProducts
 
-    printfn "%A" argv
+    // Select the max prodict in all the row groups and then the max overall product
+    let maxProduct = products |> Seq.map (fun x -> x |> Seq.max) |> Seq.max 
+
+    printfn "%i" maxProduct
     0 // return an integer exit code
