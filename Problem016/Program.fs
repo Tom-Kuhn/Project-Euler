@@ -2,24 +2,42 @@
 
 [<EntryPoint>]
 let main argv = 
-    // Declare an array of digits for the multiplication LSB first e.g. lowest order digits are in index 0 and the highest order digits are in the higher indexes
-    let results = [| Array.zeroCreate 400 |]
-    Array.set results.[0] 0 2
 
-    let calculateValue index value = 
-        if index <> 0 then
-            if (results.[index-1] >= 10) then
-                ((value + ((results.[index-1]) - ((results.[index-1]) % 10 ))) * 2)
+    let calculateValue previousValue value  = 
+        if previousValue >= 0 then
+            let prevTotal = previousValue * 2
+            if (prevTotal >= 10) then
+                (value * 2) + ((prevTotal - (prevTotal % 10 )) / 10)
             else
-                (value * 2)
+                value * 2
         else
-            // Deal with the first index seperatly as it wont have a previous value
-            (value * 2)
-    
-    for x in 1 .. 1000 do
-        Array.append (Array.mapi calculateValue results.[x - 1])       
+            value * 2 // Deal with the first index seperatly as it wont have a previous value
 
-    let result = 0        
+    let multiplyByTwo input =
+        let d = input |> Array.mapi ( fun index x -> 
+                if index <> 0 then
+                    calculateValue (input.[index - 1]) x
+                else
+                    calculateValue -1 x
+        ) 
 
-    printfn "%i" result
+        let output = d |> Array.map (fun x -> 
+            if x >= 10 then 
+                x % 10 
+            else 
+                x)
+
+        let v1 = d.[d.Length - 1]
+        if v1 >= 10 then
+            Array.append output [| (v1 - (v1 % 10)) / 10 |]
+        else
+            output
+
+    let targetPower = 1000
+
+    let powersOfTwo = Seq.unfold(fun current -> Some(current, multiplyByTwo current)) [|2|]
+
+    let result = powersOfTwo |> Seq.nth (targetPower - 1) |> Array.sum
+
+    printfn "%O" result
     0 // return an integer exit code
