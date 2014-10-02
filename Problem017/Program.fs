@@ -45,8 +45,7 @@ let main argv =
     let rec generateWords x =
         if x >= 1000 then
             let thousands = (x - (x % 1000))/1000
-            let result = generateOnesText thousands + "thousand" + generateWords (x - (thousands * 1000))
-            result
+            generateOnesText thousands + "thousand" + generateWords (x - (thousands * 1000))
         else if x >= 100 then
             let hundreds = (x - (x % 100))/100
             let result = generateOnesText hundreds + "hundred"
@@ -56,14 +55,11 @@ let main argv =
                 result
         else if x > 19 then
             let tens = (x - (x % 10))/10
-            let result = generateTensText tens + generateWords (x - (tens * 10))
-            result
+            generateTensText tens + generateWords (x - (tens * 10))
         else if x > 9 then
-            let result = generateTeensText x
-            result
+            generateTeensText x
         else
-            let result = generateOnesText x
-            result
+            generateOnesText x
 
     let text = [1 .. 1000] |> Seq.map generateWords
     let output = text |> Seq.map(fun x -> x.Length) |> Seq.sum
