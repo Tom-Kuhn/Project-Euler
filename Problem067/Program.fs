@@ -12,15 +12,13 @@ let getData (path: string) =
           
 let rec findMaximum (values: int list []) = 
     let len = values.Length
-    let leaves = values.[0]
 
     if len = 1 then
         values.[0] |> List.max
     else 
-        let rowToCalculate = values.[1]
-        let maxValues = rowToCalculate |> List.mapi ( fun i x -> 
-                    let leftNode = List.nth leaves i
-                    let rightNode = List.nth leaves (i + 1)
+        let maxValues = values.[1] |> List.mapi ( fun i x -> 
+                    let leftNode = List.nth values.[0] i
+                    let rightNode = List.nth values.[0] (i + 1)
                     x + Math.Max(leftNode, rightNode)
                 )
 
